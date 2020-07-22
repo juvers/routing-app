@@ -2,9 +2,6 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.3.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -14,14 +11,28 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+#### 0. Generate app with routing
+`ng new app-name --routing`
+<br>
+Core files to work with are:
+- AppRoutingModule
+- AppModule
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### 1. Import all components into AppRoutingModule
 
-## Running end-to-end tests
+- N.B if you generated first component as follows 
+`ng g c first`
+it will be registered with a class FirstComponent in PascalCase inside first.component.ts file in first folder. 
+will be referenced as ff:
+`import { FirstComponent } from './first/first.component';`
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+#### 2. Import the AppRoutingModule into AppModule and add it to the imports array
+- N.B The CLI peforms this for you since the --routing flag was used 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#### 3. Define routes in Routes array in AppRoutingModule
+`[{path: 'first-component', component: FirstComponent}, {}...]`
+
+#### 4. Add routes links in the app html
+   `<li><a routerLink="/first-component" routerLinkActive="active">First Component</a></li>`
+    `<li><a routerLink="/second-component" routerLinkActive="active">Second Component</a></li>` 
